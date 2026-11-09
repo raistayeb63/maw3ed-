@@ -78,3 +78,16 @@ as $$
 $$;
 revoke all on function public.get_patient_appointment(uuid) from public;
 grant execute on function public.get_patient_appointment(uuid) to anon, authenticated;
+-- فعّل بث أحداث الطلبات الجديدة والتعديلات.
+do $$
+begin
+  if not exists (
+    select 1 from pg_publication_tables
+    where pubname = 'supabase_realtime'
+      and schemaname = 'public'
+      and tablename = 'appointments'
+  ) then
+    alter publication supabase_realtime add table public.appointments;
+  end if;
+end
+$$;

@@ -1,7 +1,7 @@
 // إعداد Supabase: ضع رابط المشروع و Publishable/anon key هنا بعد إنشاء المشروع.
 // هذا المفتاح مخصص للمتصفح، ويجب حماية البيانات بسياسات RLS الموجودة في ملف supabase-setup.sql.
-const SUPABASE_URL = 'ضع-رابط-مشروع-Supabase-هنا';
-const SUPABASE_ANON_KEY = 'ضع-Publishable-Key-هنا';
+const SUPABASE_URL = 'https://sbtoczamvbyvtqotzcqp.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_33LVmS7S3daB1KhuKJBZMg_r-0kcxES';
 const supabaseReady = window.supabase && SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('ضع-') && !SUPABASE_ANON_KEY.includes('ضع-');
 const db = supabaseReady ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
 
