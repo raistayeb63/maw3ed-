@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f8f5">
+  <title>موعدي — مواعيدك الطبية بسهولة</title>
+  <link rel="stylesheet" href="33.css">
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="#home" style="text-decoration:none;color:inherit"><span class="brand-icon">✚</span><span>موعدي<small>رعاية أقرب، بخطوة أسهل</small></span></a>
+    <nav class="nav" aria-label="التنقل الرئيسي">
+      <button class="active" data-section="home">الرئيسية</button><button data-section="booking">احجز موعداً</button><button data-section="directory">دليل الأطباء</button><button data-section="requests">طلباتي</button><button data-section="doctor">دخول الطبيب</button>
+    </nav>
+  </header>
+  <main class="shell">
+    <section class="hero" id="home">
+      <div><span class="eyebrow">✦ صحتك أولويتنا</span><h1>موعدك الطبي<br><em>أصبح أسهل.</em></h1><p>ابحث عن الطبيب المناسب، أرسل طلبك، وتابع حالة الموعد من مكان واحد. تواصل مباشر بينك وبين عيادتك.</p>
+        <div class="hero-actions"><button class="primary" onclick="showSection('booking')">ابحث عن طبيب <span>←</span></button><button class="secondary" onclick="showSection('directory')">تصفّح الأطباء</button></div>
+        <div class="stats"><div class="stat"><strong>بسهولة</strong><span>احجز من أي مكان</span></div><div class="stat"><strong>بوضوح</strong><span>تابع حالة طلبك</span></div><div class="stat"><strong>مباشرة</strong><span>تواصل مع العيادة</span></div></div>
+      </div>
+      <div class="hero-art"><div class="art-card"><div class="art-head"><div class="avatar">🩺</div><div><strong>رعايتك تبدأ هنا</strong><small>اختر الطبيب المناسب لك</small></div></div><div class="art-line"></div><div class="art-time">✓ طلب موعدك في مكان واحد</div></div><div class="art-check">✦ متابعة سهلة وآمنة</div></div>
+    </section>
+    <div class="content">
+      <section class="section" id="booking">
+        <div class="section-title"><div><h2>احجز موعداً</h2><p>أدخل بياناتك واختر التخصص لعرض الأطباء المتاحين.</p></div></div>
+        <div class="panel"><form id="booking-form"><div class="form-grid">
+          <div class="field"><label for="firstName">الاسم</label><input id="firstName" required placeholder="مثال: سارة"></div>
+          <div class="field"><label for="lastName">اللقب</label><input id="lastName" required placeholder="مثال: بن صالح"></div>
+          <div class="field"><label for="phone">رقم الهاتف</label><input id="phone" type="tel" required placeholder="05 أو 06 أو 07…" dir="ltr"></div>
+          <div class="field"><label for="specialty">التخصص المطلوب</label><select id="specialty" required><option value="">اختر التخصص</option></select></div>
+        </div><div style="margin-top:15px"><button class="primary form-submit" type="submit">عرض الأطباء ←</button></div><p class="hint">سيظهر رقم هاتفك للطبيب الذي ترسل إليه الطلب لتسهيل التواصل بشأن الموعد.</p></form></div>
+        <div id="search-results"></div>
+      </section>
+      <section class="section" id="directory">
+        <div class="section-title"><div><h2>دليل الأطباء</h2><p>استعرض الأطباء وتخصصاتهم ومواقع عياداتهم.</p></div><div class="filters"><input class="search-input" id="directory-search" placeholder="ابحث بالاسم أو التخصص…"><select class="select-filter" id="directory-filter"><option value="">كل التخصصات</option></select></div></div>
+        <div class="doctors-grid" id="directory-grid"></div>
+      </section>
+      <section class="section" id="requests">
+        <div class="section-title"><div><h2>طلباتي</h2><p>تحقق من حالة طلباتك والساعة التي حددها الطبيب.</p></div></div>
+        <div class="panel" id="patient-requests"></div>
+      </section>
+      <section class="section" id="doctor">
+        <div class="section-title"><div><h2>بوابة الطبيب</h2><p>سجّل الدخول لمراجعة طلبات المواعيد والرد عليها.</p></div></div>
+        <div class="login-wrap" id="login-wrap"><div class="panel"><h3>تسجيل دخول الطبيب</h3><p>استخدم بيانات الدخول التي أضافتها إدارة الموقع.</p><form id="login-form" class="login-fields"><div class="field"><label for="username">اسم المستخدم</label><input id="username" autocomplete="username" required placeholder="اسم المستخدم"></div><div class="field"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" required placeholder="كلمة المرور"></div><button class="primary" type="submit">دخول إلى لوحة الطبيب</button></form><div class="notice">بيانات الدخول فارغة حالياً. أضف اسم كل طبيب واسم المستخدم وكلمة المرور في قائمة <b>DOCTORS</b> داخل ملف الموقع قبل الاستخدام.</div></div></div>
+        <div class="doctor-dashboard" id="doctor-dashboard"><div class="dash-head"><div><h3 id="doctor-greeting" style="margin:0"></h3><span style="font-size:13px;color:var(--muted)">طلبات حجز المرضى الموجهة إليك</span></div><button class="secondary" id="logout">تسجيل الخروج</button></div><div class="panel table-wrap"><table><thead><tr><th>المريض</th><th>التخصص</th><th>تاريخ الطلب</th><th>الحالة والوقت</th><th>الرد على الطلب</th></tr></thead><tbody id="doctor-appointments"></tbody></table><div class="empty" id="doctor-empty"><div class="empty-icon">☷</div><strong>لا توجد طلبات حتى الآن</strong><p>ستظهر طلبات المرضى هنا عند إرسالها.</p></div></div></div>
+      </section>
+    </div>
+  </main>
+  <footer><div class="shell">موعدي © 2026 · منصة لتسهيل حجز ومتابعة المواعيد الطبية</div></footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="55.js"></script>
+</body>
+</html>
